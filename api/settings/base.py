@@ -8,7 +8,9 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
                      "simpleui",
-                     "user.apps.UserConfig"
+                     "user.apps.UserConfig",
+                     "rest_framework",
+                    "rest_framework.authtoken",
                  ] + INSTALLED_APPS
 
 MIDDLEWARE += [
@@ -28,25 +30,25 @@ USE_L10N = True
 
 USE_TZ = False
 
-# AUTH_USER_MODEL = "user.User"
+AUTH_USER_MODEL = "user.User"
 
 # rest 配置
-# REST_FRAMEWORK = {
-#     # Use Django's standard `django.contrib.auth` permissions,
-#     # or allow read-only access for unauthenticated users.
-#     'DEFAULT_PERMISSION_CLASSES': (
-#         'rest_framework.permissions.IsAuthenticated',
-#     ),
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-#     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
-#     'PAGE_SIZE': 10,
-#     'DEFAULT_AUTHENTICATION_CLASSES': (
-#         'rest_framework.authentication.TokenAuthentication',
-#     ),
-#     'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
-#     'COERCE_DECIMAL_TO_STRING': False,
-#     # 'EXCEPTION_HANDLER': 'utils.custom_exception_handler.custom_exception_handler'
-# }
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
+    'PAGE_SIZE': 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
+    'COERCE_DECIMAL_TO_STRING': False,
+    # 'EXCEPTION_HANDLER': 'utils.custom_exception_handler.custom_exception_handler'
+}
 
 # 跨域增加忽略
 CORS_ALLOW_CREDENTIALS = True
